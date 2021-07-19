@@ -9,8 +9,8 @@ import { XxHash } from './xxhash';
 
 export const Algorithms = {
   map: new Map<string, HashTestAlgorithm>(),
-  register(ht: HashTestAlgorithm, name = ht.id): void {
-    if (!this.map.has(ht.name)) this.map.set(ht.name, ht);
+  register(ht: HashTestAlgorithm, name = ht.name): void {
+    if (this.map.has(name)) throw new Error('Duplicate algorithm name: ' + name);
     this.map.set(name, ht);
   },
 
@@ -44,7 +44,9 @@ export const Algorithms = {
   },
 };
 
-Algorithms.register(new Fnv1a());
+const fnv1a = new Fnv1a();
+Algorithms.register(fnv1a);
+Algorithms.register(fnv1a, 'fnv1a');
 Algorithms.register(new Fnv1a(64));
 
 Algorithms.register(new Sdbm());
@@ -59,6 +61,8 @@ Algorithms.register(new NodeCrypto('sha256', 256));
 Algorithms.register(new NodeCrypto('sha1', 128));
 Algorithms.register(new NodeCrypto('md5', 128));
 
-Algorithms.register(new XxHash(32));
+const xxHash = new XxHash(32);
+Algorithms.register(xxHash, 'xxhash');
+Algorithms.register(xxHash);
 Algorithms.register(new XxHash(64));
 Algorithms.register(new XxHash(128));

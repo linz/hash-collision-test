@@ -5,7 +5,7 @@ export class Fnv1a extends HashTestAlgorithm {
   bits: 32 | 64 | 128 | 256;
 
   constructor(bits: 32 | 64 | 128 | 256 = 32) {
-    super('fnv1a', bits);
+    super('fnv1a' + bits, bits);
   }
 
   hash(s: string): string {

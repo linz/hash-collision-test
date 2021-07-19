@@ -3,7 +3,7 @@ import { HashTestAlgorithm } from '../algo';
 
 export class FarmHash extends HashTestAlgorithm {
   constructor(bits: number) {
-    super('farmhash', bits);
+    super('farmhash' + bits, bits);
   }
 
   hash(string: string): string {

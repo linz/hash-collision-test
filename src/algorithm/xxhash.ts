@@ -7,7 +7,7 @@ export class XxHash extends HashTestAlgorithm {
   ht: xxhash.Xxhash;
 
   constructor(bits: number, seed = 0xdeadbeef) {
-    super('xxhash', bits);
+    super('xxhash' + bits, bits);
     this.seed = seed;
 
     if (this.bits === 32) this.ht = new Xxh.XXHash32(0);
