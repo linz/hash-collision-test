@@ -1,0 +1,35 @@
+{
+  "name": "@linzjs/hct",
+  "version": "0.0.1",
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --pretty",
+    "lint": "eslint src --fix"
+  },
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@sindresorhus/fnv1a": "^2.0.1",
+    "djb2a": "^2.0.0",
+    "farmhash": "^3.2.1",
+    "pino": "^6.12.0",
+    "pretty-json-log": "^0.3.2",
+    "xxhash-addon": "^1.4.0"
+  },
+  "devDependencies": {
+    "@linzjs/style": "^2.1.5",
+    "@types/node": "^16.3.3",
+    "@types/pino": "^6.3.9"
+  },
+  "bin": {
+    "hct": "./hct"
+  },
+  "oclif": {
+    "bin": "hct"
+  },
+  "files": [
+    "build/src",
+    "hct"
+  ]
+}

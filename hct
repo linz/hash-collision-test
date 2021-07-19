@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+require('./build/src/cli/index.js')
+  .Hct
+  .run()
+  .catch((error) => {
+    if (error.oclif) return require('@oclif/errors/handle')(error);
+    console.log(error);
+  });
