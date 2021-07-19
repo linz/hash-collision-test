@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --pretty",
+    "test": "ospec build/**/*.test.js",
     "lint": "eslint src --fix"
   },
   "engines": {
@@ -23,7 +24,8 @@
   "devDependencies": {
     "@linzjs/style": "^2.1.5",
     "@types/node": "^16.3.3",
-    "@types/pino": "^6.3.9"
+    "@types/pino": "^6.3.9",
+    "ospec": "^4.1.1"
   },
   "bin": {
     "hct": "./hct"
