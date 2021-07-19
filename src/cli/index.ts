@@ -16,6 +16,7 @@ export class Hct extends Command {
   static flags = {
     all: flags.boolean({ description: 'Use all algorithms' }),
     algorithms: flags.string({ description: 'Algorithms to use' }),
+    collisions: flags.boolean({ description: 'Investigate how many collisions' }),
     markdown: flags.boolean({ description: 'Dump output to markdown table' }),
     verbose: flags.boolean({ description: 'Verbose logging' }),
   };
@@ -78,7 +79,15 @@ export class Hct extends Command {
 
     logger.info({ path: args.inputFile, count }, 'Done');
     for (const a of algorithms) {
-      logger.info({ hash: a.ht.name, bits: a.ht.bits, collisions: a.collisions.size, duration: a.duration }, a.ht.id);
+      let collisionBits = undefined;
+      if (flags.collisions) {
+        collisionBits = a.ht.bits;
+        if (a.collisions.size === 0) collisionBits = findCommonPrefix(a.seen);
+      }
+      logger.info(
+        { hash: a.ht.name, bits: a.ht.bits, collisions: a.collisions.size, collisionBits, duration: a.duration },
+        a.ht.id,
+      );
     }
 
     if (flags.markdown) {
@@ -91,4 +100,32 @@ export class Hct extends Command {
       }
     }
   }
+}
+
+interface Trie {
+  node: string | null;
+  children: Map<string, Trie>;
+}
+
+function findCommonPrefix(set: Set<string>): number {
+  const root: Trie = { node: null, children: new Map() };
+
+  let maxDepth = 0;
+
+  for (const str of set.values()) {
+    let current = root;
+    for (let i = 0; i < str.length; i++) {
+      const chr = str.charAt(i);
+      let next = current.children.get(chr);
+      if (next == null) {
+        next = { node: chr, children: new Map() };
+        current.children.set(chr, next);
+      }
+
+      if (current.children.size > 1 && i > maxDepth) maxDepth = i;
+      current = next;
+    }
+  }
+
+  return maxDepth * 4; // 4 bits per hex character
 }
