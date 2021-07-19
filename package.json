@@ -8,6 +8,9 @@
     "build": "tsc --pretty",
     "lint": "eslint src --fix"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@sindresorhus/fnv1a": "^2.0.1",
