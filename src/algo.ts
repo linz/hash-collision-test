@@ -46,7 +46,6 @@ export class HashTestCase {
     const startTime = Date.now();
     for (const str of lines) {
       const hash = this.ht.hash(str);
-      console.log(this.ht.id, hash);
       if (this.seen.has(hash)) {
         const existing = this.collisions.get(hash) ?? [];
         existing.push(str);

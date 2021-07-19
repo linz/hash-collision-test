@@ -67,10 +67,6 @@ export class Hct extends Command {
         batch.length = 0;
       }
       lineDupe.add(l);
-      if (count > 10) {
-        for (const a of algorithms) a.hash(batch);
-        process.exit();
-      }
     });
     if (batch.length > 0) for (const a of algorithms) a.hash(batch);
 
