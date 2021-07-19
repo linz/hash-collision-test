@@ -6,7 +6,7 @@ const MAGIC_CONSTANT = 5381;
 
 export class Djb2a extends HashTestAlgorithm {
   constructor() {
-    super('sdbm', 32);
+    super('djb2a', 32);
   }
 
   hash(string: string): string {

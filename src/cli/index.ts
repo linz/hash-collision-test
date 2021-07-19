@@ -5,7 +5,7 @@ import { PrettyTransform } from 'pretty-json-log';
 import * as readline from 'readline';
 import { Readable } from 'stream';
 import * as zlib from 'zlib';
-import { HashTestCase } from '../algo';
+import { HashTestAlgorithmSub, HashTestCase } from '../algo';
 import { Algorithms } from '../algorithm';
 
 const logger = pino(process.stdout.isTTY ? PrettyTransform.stream() : undefined);
@@ -16,6 +16,7 @@ export class Hct extends Command {
   static flags = {
     all: flags.boolean({ description: 'Use all algorithms' }),
     algorithms: flags.string({ description: 'Algorithms to use' }),
+    markdown: flags.boolean({ description: 'Dump output to markdown table' }),
     verbose: flags.boolean({ description: 'Verbose logging' }),
   };
 
@@ -78,6 +79,16 @@ export class Hct extends Command {
     logger.info({ path: args.inputFile, count }, 'Done');
     for (const a of algorithms) {
       logger.info({ hash: a.ht.name, bits: a.ht.bits, collisions: a.collisions.size, duration: a.duration }, a.ht.id);
+    }
+
+    if (flags.markdown) {
+      console.log(`|` + ['Algorithm', 'Bits', 'Bits Used', 'Collisions', 'Duration'].join('|') + '|');
+      console.log('|' + (['-', '-', '-', '-', '-'].join('|') + '|'));
+      for (const a of algorithms) {
+        let bitsTotal = a.ht.bits;
+        if (a.ht instanceof HashTestAlgorithmSub) bitsTotal = a.ht.ht.bits;
+        console.log('|' + ([a.ht.name, bitsTotal, a.ht.bits, a.collisions.size, a.duration].join('|') + '|'));
+      }
     }
   }
 }
