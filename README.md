@@ -12,22 +12,22 @@ hct /path/to/test.txt --algorithms sha256,farmhash,farmhash:64
 
 ### Algorithms 
 
-By default the following algorithms are included
+By default the following algorithms are included `<algorithm>:<bitcount>`
 
 ```
 djb2a:32
-farmhash:32
-farmhash:64
-fnv1a:32
-fnv1a:64
+farmhash32:32
+farmhash64:64
+fnv1a32:32
+fnv1a64:64
 md5:128
 sdbm:32
 sha1:128
 sha256:256
 sha512:512
-xxhash:32
-xxhash:64
-xxhash:128
+xxhash32:32
+xxhash64:64
+xxhash128:128
 ```
 ### Composite
 sometimes its useful to use two different hash algorithms together to get a more complex key, any algorithim can be combined with a `__`
