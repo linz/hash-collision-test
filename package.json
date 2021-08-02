@@ -22,7 +22,7 @@
     "xxhash-addon": "^1.4.0"
   },
   "devDependencies": {
-    "@linzjs/style": "^2.1.5",
+    "@linzjs/style": "^3.0.0",
     "@types/node": "^16.3.3",
     "@types/pino": "^6.3.9",
     "ospec": "^4.1.1"
