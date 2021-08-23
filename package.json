@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@oclif/command": "^1.8.0",
-    "@sindresorhus/fnv1a": "^2.0.1",
+    "@sindresorhus/fnv1a": "^3.0.0",
     "djb2a": "^2.0.0",
     "farmhash": "^3.2.1",
     "pino": "^6.12.0",
