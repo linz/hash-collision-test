@@ -1725,10 +1725,10 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-xxhash-addon@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/xxhash-addon/-/xxhash-addon-1.4.0.tgz#b96a69aab2be18735b25b6f256144bd70ffffed9"
-  integrity sha512-n3Ml0Vgvy7jMYJBlQIoFLjYxXNZQ5CbzW8E2Ynq2QCUpWMqCouooW7j02+7Oud5FijBuSrjQNuN/fCiz1SHN+w==
+xxhash-addon@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/xxhash-addon/-/xxhash-addon-2.0.1.tgz#94675e4d701231a6db91a134f8fb1883fd3a330e"
+  integrity sha512-Ev/Pu+WS45RKwIHmy5FkRjLmiVwdS2kbuajd4ezZJVM4YJ4tIMp6hr2d2FNMHva0RBEBI+o7Bf//9tzy6QUe+A==
 
 yallist@^4.0.0:
   version "4.0.0"
