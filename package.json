@@ -17,7 +17,7 @@
     "@sindresorhus/fnv1a": "^2.0.1",
     "djb2a": "^2.0.0",
     "farmhash": "^3.2.1",
-    "pino": "^6.12.0",
+    "pino": "^8.3.1",
     "pretty-json-log": "^0.3.2",
     "xxhash-addon": "^1.4.0"
   },
